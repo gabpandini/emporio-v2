@@ -1,4 +1,5 @@
 import { FormEvent, useState } from "react";
+import { useHistory } from 'react-router-dom';
 
 interface Beer {
   id?: number,
@@ -6,7 +7,8 @@ interface Beer {
 }
 
 export function Create() {
-  const [beer, setBeer] = useState<Beer>({} as Beer);
+  let history = useHistory();
+  const [beer, setBeer] = useState<Beer>({name: ''});
 
   const saveBeer = async (ev: FormEvent<HTMLFormElement>) => {
     if (beer.name.length < 3) {
@@ -23,11 +25,12 @@ export function Create() {
       },
       body: JSON.stringify(beer) // transformando um objeto em texto-json
     });
+    history.push('/beers');
   }
 
   return (
     <form onSubmit={saveBeer}>
-      <input type="text" required minLength={3} onChange={(ev) => {
+      <input type="text" value={beer.name} required minLength={3} onChange={(ev) => {
         setBeer({ name: ev.target.value });
       }} />
       <button type="submit">Salvar</button>

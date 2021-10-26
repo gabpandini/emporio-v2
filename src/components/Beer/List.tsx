@@ -8,8 +8,12 @@ interface Beer {
 export function List() {
     const [beers, setBeers] = useState<Beer[]>([]);
 
+
     useEffect(() => {
-        fetch('http://localhost:8080/beers').then((response) => response.json()).then((data) => setBeers(data));
+
+        fetch('http://localhost:8080/beers').then((response) => response.json()).then((data) => {
+            setBeers(data);
+        });
     }, []);
 
     return (
@@ -18,6 +22,5 @@ export function List() {
                 beers.map((beer) => <li key={beer.id}>{beer.name}</li>)
             }
         </ul>
-
     );
 }
