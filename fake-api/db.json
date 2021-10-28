@@ -17,5 +17,11 @@
       "name": "Patagônia",
       "id": 4
     }
+  ],
+  "wines": [
+    {
+      "id": 1,
+      "name": "Vinho Tinto Relevos"
+    } 
   ]
 }

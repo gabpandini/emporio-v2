@@ -1,10 +1,6 @@
 import { FormEvent, useState } from "react";
 import { useHistory } from 'react-router-dom';
-
-interface Beer {
-  id?: number,
-  name: string
-}
+import { Beer } from "../../../models/interfaces";
 
 export function Create() {
   let history = useHistory();
